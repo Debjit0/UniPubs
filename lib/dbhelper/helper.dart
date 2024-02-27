@@ -97,12 +97,12 @@ class MongoDatabase {
   // Perform fuzzy matching on each document's authors
   final List<Map<String, dynamic>> results = [];
   for (var doc in documents) {
-    final Map<String, dynamic> authorsMap = Map<String, dynamic>.from(doc['Authors'] ?? {}); // Extract the authors field from the document
-    for (var author in authorsMap.values) { // Iterate over the values in the authors map
-      final double similarity = author.toString().similarityTo(searchText); // Calculate similarity between author name and searchText
-      if (similarity > 0.2) { // Adjust this threshold based on your requirements
-        results.add(doc); // If similarity is above threshold, add the document to results
-        break; // Move to the next document after finding a match for any author
+    final Map<String, dynamic> authorsMap = Map<String, dynamic>.from(doc['Authors'] ?? {});
+    for (var author in authorsMap.values) {
+      final double similarity = author.toString().similarityTo(searchText); 
+      if (similarity > 0.2) { 
+        results.add(doc); 
+        break; 
       }
     }
   }

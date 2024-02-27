@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uni/pages/homepage.dart';
 import 'package:uni/pages/searchpage.dart';
+import 'package:uni/pages/searchpagehome.dart';
 
 void main() {
   runApp(MyApp());
@@ -49,7 +50,7 @@ class _BottomBarState extends State<BottomBar> {
           // Pages corresponding to each tab
           HomePage(),
           Container(color: Colors.green, child: Center(child: Text('Business Page'))),
-          SearchPage()
+          SearchPageHome()
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
