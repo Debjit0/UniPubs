@@ -38,6 +38,7 @@ dependencies:
   mongo_dart: ^0.10.0
   get: ^4.6.6
   string_similarity: ^2.0.0
+  fl_chart: ^0.65.0
 
 dev_dependencies:
   flutter_test:
