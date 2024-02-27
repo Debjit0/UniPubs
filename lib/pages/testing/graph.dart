@@ -1,27 +1,12 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:mongo_dart/mongo_dart.dart';
+import 'package:uni/dbhelper/helper.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Yearly Publications Graph',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: YearlyPublicationsPage(),
-    );
-  }
-}
 
 class YearlyPublicationsPage extends StatelessWidget {
   
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +14,7 @@ class YearlyPublicationsPage extends StatelessWidget {
         title: Text('Yearly Publications Graph'),
       ),
       body: FutureBuilder<List<Map<String, dynamic>>>(
-        future: _getDataFromMongoDB(),
+        future: MongoDatabase().getDataFromMongoDB(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return CircularProgressIndicator();
@@ -44,6 +29,8 @@ class YearlyPublicationsPage extends StatelessWidget {
       ),
     );
   }
+
+  
 
   Future<List<Map<String, dynamic>>> _getDataFromMongoDB() async {
     final database = await Db.create(
@@ -74,29 +61,35 @@ class YearlyPublicationsPage extends StatelessWidget {
  Widget _buildGraph(List<Map<String, dynamic>> data) {
   return Padding(
     padding: const EdgeInsets.all(16.0),
-    child: BarChart(
-      BarChartData(
-        barGroups: List.generate(
-          data.length,
-          (index) => BarChartGroupData(
-            x: index,
-            barRods: [
-              BarChartRodData(
-                toY: data[index]['count'].toDouble(),
-              ),
-            ],
-          ),
-        ),
-        borderData: FlBorderData(
-                border: const Border(bottom: BorderSide(), left: BorderSide())),
-        gridData: FlGridData(show: false),
-        titlesData: FlTitlesData(
-              bottomTitles: AxisTitles(sideTitles:SideTitles(showTitles: false)),
-              leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-              topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-              rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+    child: AspectRatio(
+      aspectRatio: 2,
+      child: BarChart(
+        BarChartData(
+          barGroups: List.generate(
+            data.length,
+            (index) => BarChartGroupData(
+              x: index,
+              barRods: [
+                BarChartRodData(
+                  toY: data[index]['count'].toDouble(),
+                ),
+              ],
             ),
-      )
+          ),
+          borderData: FlBorderData(
+                  border: const Border(bottom: BorderSide(), left: BorderSide())),
+          gridData: FlGridData(show: false),
+          titlesData: FlTitlesData(
+                bottomTitles: AxisTitles(sideTitles:SideTitles(showTitles: true,getTitlesWidget: (value, meta) {
+                  if (value >= 0 && value < data.length) {
+                  return Text(data[value.toInt()]['year'].toString());
+                }
+                return Text("");
+                },)),
+                leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false,)),
+              ),
+        )
+      ),
     )
   );
 }

@@ -49,7 +49,7 @@ class _BottomBarState extends State<BottomBar> {
         },
         children: <Widget>[
           // Pages corresponding to each tab
-          YearlyPublicationsPage(),
+          HomePage(),
           Container(color: Colors.green, child: Center(child: Text('Business Page'))),
           SearchPageHome()
         ],
