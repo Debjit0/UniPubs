@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:uni/pages/queryresultpage.dart';
+import 'package:uni/pages/showAllResults.dart';
 
 class SearchPageHome extends StatelessWidget {
   const SearchPageHome({super.key});
@@ -18,7 +18,7 @@ class SearchPageHome extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: () {
-                Get.to(QueryResultPage("Showing All Publications"));
+                Get.to(showAllResults());
               },
               child: Container(
                 padding: EdgeInsets.all(8),

@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:uni/dbhelper/helper.dart';
 import 'package:uni/pages/bottom.dart';
+import 'package:uni/pages/globalData.dart';
 import 'package:uni/pages/homepage.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await MongoDatabase().start();
+  allData =  await MongoDatabase().start();
   runApp(const MyApp());
 }
 

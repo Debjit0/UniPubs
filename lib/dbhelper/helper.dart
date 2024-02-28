@@ -1,13 +1,11 @@
 import 'package:mongo_dart/mongo_dart.dart';
 import 'package:string_similarity/string_similarity.dart';
+import 'package:uni/pages/globalData.dart';
 
 class MongoDatabase {
   static var db, uni;
-  List<Map<String, dynamic>> allData = [];
 
-
-
-  Future<void> start() async {
+  Future<List<Map<String, dynamic>>> start() async {
     db = await Db.create(
         "mongodb+srv://debjitfirstname:Debjit2635@cluster0.9sj6ekf.mongodb.net/uni");
     await db.open();
@@ -15,6 +13,7 @@ class MongoDatabase {
     print("Connection to MongoDB established");
     allData = await uni.find().toList();
     print(allData);
+    return allData;
   }
 
   Future<List<Map<String, dynamic>>> getQueryData(String searchString) async {

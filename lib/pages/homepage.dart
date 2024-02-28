@@ -11,10 +11,16 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+            "Statistics",
+            style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
+          ),
+      ),
       body: SafeArea(
         child: Column(
           children: [
@@ -58,13 +64,6 @@ class _HomePageState extends State<HomePage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            "Statistics",
-            style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(
-            height: 35,
-          ),
           Container(
             width: double.infinity,
             child: Column(

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class QueryResultPage extends StatelessWidget {
-  QueryResultPage(this.message);
-  String message;
+class showAllResults extends StatelessWidget {
+  const showAllResults({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Search Results")),
       body: Column(children: [
-        Text(message)
+        Text("Showing all results")
       ]),
     );
   }
