@@ -115,6 +115,8 @@ class MongoDatabase {
       yearlyCounts.update(year, (value) => value + 1, ifAbsent: () => 1);
     }
 
+    
+
     // Prepare data for graph
     List<Map<String, dynamic>> yearlyData = [];
     yearlyCounts.forEach((year, count) {
@@ -122,4 +124,8 @@ class MongoDatabase {
     });
     return yearlyData;
   }
+
+  Future<List<Map<String, dynamic>>> getDocumentTypeFromMongoDB() async {
+      return allData;
+    }
 }

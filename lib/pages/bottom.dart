@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uni/pages/globalData.dart';
 import 'package:uni/pages/homepage.dart';
 import 'package:uni/pages/searchpage.dart';
 import 'package:uni/pages/searchpagehome.dart';

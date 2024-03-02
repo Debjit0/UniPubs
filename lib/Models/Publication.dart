@@ -96,7 +96,7 @@ class Publication {
     //pubMedID = json['PubMed ID'];
     //languageOfOriginalDocument = json['Language of Original Document'];
     //abbreviatedSourceTitle = json['Abbreviated Source Title'];
-    //documentType = json['Document Type'];
+    documentType = json['Document Type'];
     //publicationStage = json['Publication Stage'];
     //openAccess = json['Open Access'];
     //source = json['Source'];
