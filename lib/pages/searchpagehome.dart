@@ -4,7 +4,8 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:uni/pages/showAllResults.dart';
 
 class SearchPageHome extends StatelessWidget {
-  const SearchPageHome({super.key});
+  SearchPageHome({super.key, this.data});
+  var data;
 
   @override
   Widget build(BuildContext context) {

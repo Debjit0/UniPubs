@@ -5,6 +5,7 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:uni/Models/Publication.dart';
 import 'package:uni/dbhelper/helper.dart';
 import 'package:uni/pages/publicationsdetails.dart';
+import 'package:uni/pages/widget/pubcard.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});
@@ -60,22 +61,4 @@ class _SearchPageState extends State<SearchPage> {
     );
   }
 
-  Widget displayPubs(Publication data) {
-    return GestureDetector(
-      onTap: () {
-        Get.to(PublicationDetails(data: data,));
-      },
-      child: Card(
-        child: Column(
-          children: [
-            Text("${data.authors?.a1},${data.affiliations?.af1}"),
-            Text("${data.authors?.a2},${data.affiliations?.af2}"),
-            Text("${data.authors?.a3},${data.affiliations?.af3}"),
-            Text("${data.authors?.a4},${data.affiliations?.af4}"),
-            Text("${data.title}")
-          ],
-        ),
-      ),
-    );
-  }
 }
